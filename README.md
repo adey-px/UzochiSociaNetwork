@@ -5,7 +5,7 @@
 - Authenticate users with register and login
 - Edit profile, upload profile image and background
 - Change password when logged in, and logout users
-- Reset forgotten passwords with verificaion
+- Reset forgotten passwords with user verification
 - display multiple users randomly with pagination
 - Follow other users to see their posts and updates
 - Have users following to receive posts and updates
