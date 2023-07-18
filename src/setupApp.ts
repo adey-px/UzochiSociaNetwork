@@ -39,8 +39,12 @@ export class SetupAppserver {
 		);
 	}
 
-	/* set standrad middleware */
-	private standardMiddleware(app: Application): void {}
+	/* set standard middleware */
+	private standardMiddleware(app: Application): void {
+		app.use(compression());
+		app.use(json({ limit: '50mb' }));
+		app.use(urlencoded({ extended: true, limit: '50mb' }));
+	}
 
 	/* set routing middleware */
 	private routingMiddleware(app: Application): void {}
