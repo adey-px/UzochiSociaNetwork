@@ -75,7 +75,7 @@ export class SetupAppserver {
 	/* configure server */
 	private configureHttServer(httpServer: http.Server): void {
 		httpServer.listen(SERVER_PORT, () => {
-			console.log(`Started development server on port ${SERVER_PORT}`);
+			console.log(`**Started server on port ${SERVER_PORT}`);
 		});
 	}
 }
