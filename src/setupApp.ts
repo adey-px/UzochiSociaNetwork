@@ -1,4 +1,5 @@
 import { Application, json, urlencoded, Response, Request, NextFunction } from 'express';
+import { envConfig } from './envConfig';
 import http from 'http';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -7,8 +8,6 @@ import cookieSession from 'cookie-session';
 import compression from 'compression';
 import HTTP_STATUS from 'http-status-codes';
 import 'express-async-errors';
-
-const SERVER_PORT = 5000;
 /*
  */
 // Instance of express server class
@@ -32,16 +31,16 @@ export class SetupAppserver {
 		app.use(
 			cookieSession({
 				name: 'session',
-				keys: ['test1', 'test2'],
+				keys: [envConfig.SECRET_KEY_ONE!, envConfig.SECRET_KEY_TWO!],
 				maxAge: 7 * 24 * 60 * 60,
-				secure: false,
+				secure: envConfig.NODE_ENV !== 'development',
 			})
 		);
 		app.use(hpp());
 		app.use(helmet());
 		app.use(
 			cors({
-				origin: '*',
+				origin: envConfig.CLIENT_URL,
 				credentials: true,
 				methods: ['GET', 'POST', 'PUT', 'DELETE'],
 				optionsSuccessStatus: 200,
@@ -74,8 +73,8 @@ export class SetupAppserver {
 
 	/* configure server */
 	private configureHttServer(httpServer: http.Server): void {
-		httpServer.listen(SERVER_PORT, () => {
-			console.log(`**Started server on port ${SERVER_PORT}`);
+		httpServer.listen(envConfig.SERVER_PORT, () => {
+			console.log(`**Started server on http://localhost:${envConfig.SERVER_PORT}`);
 		});
 	}
 }
