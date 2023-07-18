@@ -8,8 +8,9 @@ lerna-debug.log*
 .pnpm-debug.log*
 
 # Others
-Readyou.md
-zeenote.md
+vReadme.md
+zeenote1.md
+zeenote2.md
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
