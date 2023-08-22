@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
 import { SetupAppserver } from './setupApp';
-import mongoConnection from './setupDb';
 import { envConfig } from './envConfig';
+import mongoConnection from './setupDb';
 /*
  */
 // Finish setup & run server

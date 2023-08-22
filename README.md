@@ -6,14 +6,13 @@
 - Edit profile, upload profile image and background
 - Change password when logged in, and logout users
 - Reset forgotten passwords with user verification
-- display multiple users randomly with pagination
+- Display multiple users randomly with pagination
 - Follow other users to see their posts and updates
 - Have users following to receive posts and updates
 - Block, unblock and unfollow selected users
 - Chat privately with text, image, gif, and reaction
 - Create, read, update or delete chats and posts
-- Make comments on posts
-- Send reactions to posts
+- Make comments and Send reactions to posts
 - Have notification settings on user profiles
 - Receive in-app and email notifications
 - Delete and update notifications
