@@ -9,6 +9,7 @@ import compression from 'compression';
 import HTTP_STATUS from 'http-status-codes';
 import 'express-async-errors';
 import routesHandler from './routes';
+import { CustomError, IErrorResponse } from './shared/globals/helpers/errorHandler';
 /*
  */
 // Instance of express server class
@@ -61,8 +62,19 @@ export class SetupAppserver {
 		routesHandler(app);
 	}
 
-	/* global Error handler  */
-	private globalErrorHandler(app: Application): void {}
+	/* global Error handler, first check all urls */
+	private globalErrorHandler(app: Application): void {
+		app.all('*', async (req: Request, res: Response) => {
+			res.status(HTTP_STATUS.NOT_FOUND).json({ messgae: `${req.originalUrl} not found` });
+		});
+		app.use((error: IErrorResponse, req: Request, res: Response, next: NextFunction) => {
+			console.log(error);
+			if (error instanceof CustomError) {
+				return res.status(error.statusCode).json(error.serializedError());
+			}
+			next();
+		});
+	}
 
 	/* start server handler */
 	private async startHttpServer(app: Application): Promise<void> {
@@ -72,6 +84,7 @@ export class SetupAppserver {
 		} catch (error) {}
 	}
 
+	/* connect to socket IO */
 	private createSocketIO(httpServer: http.Server): void {}
 
 	/* configure server */

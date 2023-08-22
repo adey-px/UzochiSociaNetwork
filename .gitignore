@@ -9,8 +9,8 @@ lerna-debug.log*
 
 # Others
 vReadme.md
-zeenote1.md
-zeenote2.md
+zeenoteB.md
+zeenoteF.md
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
