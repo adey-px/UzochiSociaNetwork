@@ -8,6 +8,7 @@ import cookieSession from 'cookie-session';
 import compression from 'compression';
 import HTTP_STATUS from 'http-status-codes';
 import 'express-async-errors';
+import routesHandler from './routes';
 /*
  */
 // Instance of express server class
@@ -56,7 +57,9 @@ export class SetupAppserver {
 	}
 
 	/* routing middleware */
-	private routingMiddleware(app: Application): void {}
+	private routingMiddleware(app: Application): void {
+		routesHandler(app);
+	}
 
 	/* global Error handler  */
 	private globalErrorHandler(app: Application): void {}

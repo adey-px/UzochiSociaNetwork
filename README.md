@@ -19,11 +19,11 @@
 - Delete and update notifications
 
 ### Backend Technology
-- Node.js
 - TypeScript
 - MongoDB
 - Mongoose
 - Redis
+- Node.js
 - Express
 - Bull
 - PM2
