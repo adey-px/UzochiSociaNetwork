@@ -10,7 +10,7 @@ import {
 import { envConfig } from '@root/envConfig';
 import { Server } from 'socket.io';
 import { createClient } from 'redis';
-import { createAdapter } from 'socket.io-redis-adapter';
+import { createAdapter } from '@socket.io/redis-adapter';
 import 'express-async-errors';
 import Logger from 'bunyan';
 import http from 'http';
@@ -118,7 +118,7 @@ export class SetupAppserver {
     }
   }
 
-  /* create socket IO redis adapter */
+  /* create socketIO & redis adapter */
   private async createSocketIO(httpServer: http.Server): Promise<Server> {
     const io: Server = new Server(httpServer, {
       cors: {
@@ -133,7 +133,7 @@ export class SetupAppserver {
     return io;
   }
 
-  /* configure Express server */
+  /* configure express server */
   private startAppServer(httpServer: http.Server): void {
     setLog.info(`Started server with socket process ${process.pid}`);
     httpServer.listen(PORT, () => {

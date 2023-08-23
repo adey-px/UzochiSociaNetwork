@@ -18,7 +18,7 @@ export interface IErrorSeries {
 	statusCode: number;
 }
 
-// Create Abstract or Base Class for CustomError
+// Create CustomError using Abstract or Base Class
 export abstract class CustomError extends Error {
 	abstract statusRead: string;
 	abstract statusCode: number;
