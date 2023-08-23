@@ -7,7 +7,6 @@ dotenv.config({});
 
 // Create class to contain ALL config vars
 class Config {
-	[ x: string ]: any;
 	public NODE_ENV: string | undefined;
 	public CLIENT_URL: string | undefined;
 	public JWT_TOKEN: string | undefined;
@@ -67,6 +66,6 @@ class Config {
 	// }
 }
 
-// Create instance of the Config class, 
+// Create instance of the Config class,
 // - to be used to load env vars across project files
 export const envConfig: Config = new Config();

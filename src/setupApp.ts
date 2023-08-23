@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Application,
   json,
@@ -6,7 +7,7 @@ import {
   Request,
   NextFunction,
 } from 'express';
-import { envConfig } from './envConfig';
+import { envConfig } from '@root/envConfig';
 import { Server } from 'socket.io';
 import { createClient } from 'redis';
 import { createAdapter } from 'socket.io-redis-adapter';
@@ -19,13 +20,15 @@ import hpp from 'hpp';
 import cookieSession from 'cookie-session';
 import compression from 'compression';
 import HTTP_STATUS from 'http-status-codes';
-import routeHandler from './routes';
+import routeHandler from '@root/routes';
 import {
   CustomError,
   IErrorResponse,
-} from './shared/globals/helpers/errorHandler';
+} from '@globals/helpers/errorHandler';
 /*
  */
+const PORT = 5000;
+
 // Set custom logger from env config file,
 // name string identifies error source file
 const setLog: Logger = envConfig.customLogger('setupApp');
@@ -90,7 +93,7 @@ export class SetupAppserver {
     app.use(
       (
         err: IErrorResponse,
-        req: Request,
+        _req: Request,
         res: Response,
         next: NextFunction,
       ) => {
@@ -133,9 +136,9 @@ export class SetupAppserver {
   /* configure Express server */
   private startAppServer(httpServer: http.Server): void {
     setLog.info(`Started server with socket process ${process.pid}`);
-    httpServer.listen(envConfig.SERVER_PORT, () => {
+    httpServer.listen(PORT, () => {
       setLog.info(
-        `Started server on http://localhost:${envConfig.SERVER_PORT}`,
+        `Started server on http://localhost:${PORT}`,
       );
     });
   }
